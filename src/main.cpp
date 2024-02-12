@@ -34,6 +34,7 @@ void estHumide()
      if(lastState != changement){
    //   Serial.println("changement vers humide");
    lcd.clear();
+    lcd.setCursor(0, 0);
     lcd.print(" Humide");
   }
 
@@ -44,6 +45,7 @@ void estHumide()
      if(lastState != changement){
     //  Serial.println("changement vers sec");
     lcd.clear();
+    lcd.setCursor(0,0);
     lcd.print(" Sec");
   }
 
@@ -52,13 +54,15 @@ void estHumide()
  
 }
 
-void afficherChiffre(int input){
-  Serial.print(input);
+void afficherChiffre(int nbchar){
+ int input = Wire.read();
+  lcd.setCursor(1,2);
+  lcd.print(input);
 }
 
 void setup()
 {
-  Wire.begin(0001);
+  Wire.begin(1);
   
   // put your setup code here, to run once:
   Serial.begin(9600);
