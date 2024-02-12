@@ -52,8 +52,13 @@ void estHumide()
  
 }
 
+void afficherChiffre(int input){
+  Serial.print(input);
+}
+
 void setup()
 {
+  Wire.begin(0001);
   
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -78,6 +83,10 @@ void setup()
 
 void loop()
 {
+
+  Wire.onReceive(afficherChiffre);
+
+  
   delay(50);   // TODO a changer plus tard, c'est pour s'assurer que le micro controleur tourne pas en boucle pour rine
                // put your main code here, to run repeatedly:
                // estSurBord(); //
