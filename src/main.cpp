@@ -25,7 +25,6 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 void estHumide()
 {
  //? avec false = sec et true = humide
-
   int valeurHumi = analogRead(A0);
 
   if (valeurHumi > 500)
@@ -33,7 +32,7 @@ void estHumide()
     changement = true;
      if(lastState != changement){
    //   Serial.println("changement vers humide");
-   lcd.clear();
+    lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print(" Humide");
   }
@@ -55,9 +54,15 @@ void estHumide()
 }
 
 void afficherChiffre(int nbchar){
- int input = Wire.read();
-  lcd.setCursor(1,2);
-  lcd.print(input);
+    String input = "";
+String inputPrecedent = "";
+    while (Wire.available()) {
+      char b = Wire.read();
+      input += b;
+  }
+  Serial.print(input);
+  lcd.setCursor(0,1);
+  lcd.print(input+"       ");
 }
 
 void setup()
