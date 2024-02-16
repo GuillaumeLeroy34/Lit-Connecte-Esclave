@@ -15,7 +15,7 @@ int b11 = 11;
 int b12 = 12;
 int b13 = 13;
 boolean changement = false;
-boolean lastState = false;
+boolean lastState = true; 
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
@@ -72,7 +72,7 @@ void setup()
   // put your setup code here, to run once:
   Serial.begin(9600);
   lcd.begin(16, 2);
-  lcd.clear();
+  lcd.clear();  
   //! inutiles pinMode(b2, INPUT);
   //! inutiles pinMode(b3, INPUT);
   // pinMode(b4, OUTPUT); //? buzzer
